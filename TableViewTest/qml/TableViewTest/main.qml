@@ -3,7 +3,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 
 Rectangle {
-    width: 360
+    width: 400
     height: 360
     ColumnLayout
     {
@@ -16,7 +16,7 @@ Rectangle {
             TextField {
                 id: filterEdit
                 onTextChanged: {
-                    employeeModel.setFilterFixedString(filterEdit.text)
+                    business.model.setFilterFixedString(filterEdit.text)
                 }
             }
         }
@@ -25,7 +25,7 @@ Rectangle {
         {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            model: employeeModel
+            model: business.model
             sortIndicatorVisible: true
             alternatingRowColors: true
             TableViewColumn
@@ -47,8 +47,43 @@ Rectangle {
                 width: 100
             }
             onSortIndicatorOrderChanged: {
-                model.sort(sortIndicatorColumn,sortIndicatorOrder)
-                console.debug("COLUMN: " + sortIndicatorColumn)
+                business.model.sort(sortIndicatorColumn,sortIndicatorOrder)
+            }
+        }
+
+        GroupBox
+        {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            title: "Add"
+            RowLayout
+            {
+                TextField
+                {
+                    id: lastName
+                    Layout.fillWidth: true
+                }
+                TextField
+                {
+                    id: firstName
+                    Layout.fillWidth: true
+                }
+                TextField
+                {
+                    id: title
+                    Layout.fillWidth: true
+                }
+                Button
+                {
+                    Layout.fillWidth: true
+                    text: "ok"
+                    onClicked: {
+                        business.addEmployee(lastName.text,firstName.text,title.text)
+                        lastName.text = ""
+                        firstName.text = ""
+                        title.text = ""
+                    }
+                }
             }
         }
     }

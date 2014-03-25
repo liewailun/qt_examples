@@ -60,6 +60,13 @@ void EmployeeModel::load()
         record.append(q.value(2).toString());
         m_list.append(record);
     }
+    QModelIndex index = createIndex(0,0);
+    dataChanged(index,index);
+}
+
+void EmployeeModel::clear()
+{
+    m_list.clear();
 }
 
 void EmployeeModel::print()
@@ -72,4 +79,13 @@ void EmployeeModel::print()
         }
         qDebug() << "\n\n";
     }
+}
+
+void EmployeeModel::addItem(QString lastName, QString firstName, QString title)
+{
+    QList<QString> record;
+    record.append(lastName);
+    record.append(firstName);
+    record.append(title);
+    m_list.append(record);
 }

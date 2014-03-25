@@ -22,8 +22,11 @@ public:
     QHash<int, QByteArray> roleNames() const;
 
     void load();
+    void clear();
 
     void print();
+
+    void addItem(QString lastName, QString firstName, QString title);
 
 signals:
 
