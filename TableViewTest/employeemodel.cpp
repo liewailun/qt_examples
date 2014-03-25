@@ -9,11 +9,13 @@ EmployeeModel::EmployeeModel(QObject *parent) :
 
 int EmployeeModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return m_list.count();
 }
 
 int EmployeeModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return 3;
 }
 

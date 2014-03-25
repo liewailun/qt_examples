@@ -15,6 +15,9 @@ Rectangle {
             title: "Filter"
             TextField {
                 id: filterEdit
+                onTextChanged: {
+                    employeeModel.setFilterFixedString(filterEdit.text)
+                }
             }
         }
 
