@@ -12,7 +12,7 @@ Rectangle {
         {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            title: "Filter"
+            title: "Filter (by LastName)"
             TextField {
                 id: filterEdit
                 onTextChanged: {
@@ -49,6 +49,10 @@ Rectangle {
             onSortIndicatorOrderChanged: {
                 business.model.sort(sortIndicatorColumn,sortIndicatorOrder)
             }
+            onDoubleClicked: {
+                business.doubleClicked(row)
+                edit.visible = true
+            }
         }
 
         GroupBox
@@ -84,6 +88,25 @@ Rectangle {
                         title.text = ""
                     }
                 }
+            }
+        }
+    }
+    Rectangle
+    {
+        id: edit
+        anchors.fill: parent
+        color: "lightgray"
+        visible: false
+        ColumnLayout {
+            anchors.centerIn: parent
+            Text {
+                text: "you just doubleclicked an item."
+                Layout.alignment: Qt.AlignCenter
+            }
+            Button {
+                text: "back"
+                Layout.alignment: Qt.AlignCenter
+                onClicked: edit.visible = false
             }
         }
     }

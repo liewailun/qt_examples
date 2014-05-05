@@ -15,6 +15,8 @@ public slots:
     void sort(int column, Qt::SortOrder order);
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
 
+    QString getLastName(int row);
+
 };
 
 #endif // EMPLOYEESORTFILTER_H

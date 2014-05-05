@@ -21,6 +21,7 @@ signals:
 
 public slots:
     void addEmployee(QString lastName, QString firstName, QString title);
+    void doubleClicked(int row);
 
 private:
     EmployeeModel m_model;

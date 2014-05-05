@@ -37,3 +37,10 @@ void BusinessLogic::addEmployee(QString lastName, QString firstName, QString tit
         m_filterModel.invalidate();
     }
 }
+
+void BusinessLogic::doubleClicked(int row)
+{
+    qDebug() << m_filterModel.index(row,0).data(0).toString();
+    qDebug() << m_filterModel.index(row,0).data(1).toString();
+    qDebug() << m_filterModel.index(row,0).data(2).toString();
+}
