@@ -2,6 +2,8 @@
 #include <QLibrary>
 #include <QDebug>
 
+#define LIBFILE "../DllTest/release/DllTest.dll"
+
 typedef void (*hello)();
 typedef void (*test)(void (*a)(const char *));
 
@@ -14,12 +16,12 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    QLibrary l("DllTest.dll");
+    QLibrary l(LIBFILE);
 
     if(l.load())
     {
-        hello helloLib = (hello) l.resolve("DllTest.dll",QString("hello").toLatin1());
-        test funcLib = (test) l.resolve("DllTest.dll",QString("test").toLatin1());
+        hello helloLib = (hello) l.resolve(LIBFILE,QString("hello").toLatin1());
+        test funcLib = (test) l.resolve(LIBFILE,QString("test").toLatin1());
 
         helloLib();
         funcLib(func);
